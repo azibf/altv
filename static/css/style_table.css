@@ -1,0 +1,16 @@
+table {
+
+    text-align: left;
+    border-collapse: collapse;
+    box-shadow: 0 0 0 10px #e60000;
+    color: #452F21;
+}
+th {
+    padding: 10px 8px;
+    background: white;
+}
+td {
+    border-top: 10px solid #e60000;
+    padding: 8px;
+    background: white;
+}

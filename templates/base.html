@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="static/css/style_table.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style_body.css">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <header>
+    <nav class="navbar navbar-light" style="background-color: #e60000;">
+        <a class="navbar-brand" href="#">
+            <h1 style="color:white;">Study hard</h1>
+        {% if current_user.is_authenticated %}
+                <a class="navbar-brand" href="/logout" style="color:white;">{{ current_user.name }}</a>
+            {% else %}
+                <p>
+                    <a class="btn btn-danger" style="background:#e60000;" href="/register">Register</a>
+                    <a class="btn btn-danger" style="background:#e60000;" href="/login">Login</a>
+                </p>
+            {% endif %}
+            <h3 style="color:white;">#BOTAY</h3>
+        </a>
+    </nav>
+    <nav class="navbar navbar-light" style="background-color: #b3b3b3;">
+        <a class="navbar-brand" href="#">
+         <br>
+            {% if current_user.is_authenticated %}
+             <a class="btn btn-link" style="color:white;" href="/map">Единомышленники в твоём городе</a>
+            {% endif %}
+             <a class="btn btn-link" style="color:white;" href="/blog">#Заботано</a>
+            {% if current_user.is_authenticated %}
+             <a class="btn btn-link" style="color:white;" href="/planner">To do list</a>
+            {% endif %}
+             <a class="btn btn-link" style="color:white;" href="/library/all">Библиотека</a>
+         </br>
+        </a>
+    </nav>
+
+    </header>
+        <!-- Begin page content -->
+        <main role="main" class="container">
+            {% block content %}{% endblock %}
+        </main>
+</body>
+</html>
+

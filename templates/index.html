@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br></br>
+<h2 style="color:white;" align="center">Истории успеха</h2>
+{% if (current_user.is_authenticated)%}
+        <a href="addstory" class="btn btn-secondary">Добавить историю</a>
+{% endif %}
+<br></br>
+{% for item in news%}
+<div class="col-md6 border rounded">
+    <h3 style="color:white;" align="center">{{item.title}}</h3>
+    <div style="color:white;">
+        Автор - {{item.user.name}}
+    </div>
+    <div style="color:white;">
+        Дата написания - {{item.created_date}}
+    </div>
+    <div style="color:white;">
+        {{item.content}}
+    </div>
+    {% if current_user.is_authenticated and current_user == item.user %}
+    <div>
+        <a href="/story/{{ item.id }}" class="btn btn-outline-danger">Изменить</a>
+        <a href="/story_delete/{{ item.id }}" class="btn btn-outline-danger">Удалить</a>
+    </div>
+    {% endif %}
+    </div>
+    <br></br>
+{% endfor %}
+{% endblock %}

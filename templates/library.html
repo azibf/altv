@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <style>
+        body {
+            background-color: #000000;
+        }
+        p {
+            color: white; /* Цвет текста */
+        }
+        table {
+        text-align: left;
+        border-collapse: collapse;
+        box-shadow: 0 0 0 10px #e60000;
+        color: #452F21;
+        }
+        th {
+        padding: 10px 8px;
+        background: white;
+        }
+
+        td {
+
+        border-top: 10px solid #e60000;
+        padding: 8px;
+        background: white;
+        }
+
+    </style>
+    <br></br>
+    <h2 style="color:white;" align="center">Библиотека</h2>
+    {% if (current_user.id == 1)%}
+       <p style="color:white;" align="center"><a href="/addbook/{{1}}" class="btn btn-secondary">Добавить книгу</a></p>
+    {% elif current_user.is_authenticated%}
+        <p style="color:white;" align="center"><a href="/addbook/{{0}}" class="btn btn-secondary">Предложить книгу</a></p>
+    {% endif %}
+        <br>
+            <table align="center">
+                <tr>
+                  <th>Название</th>
+                  <th>Автор</th>
+                  <th>Предмет</th>
+                  {% if current_user.is_authenticated %}
+                    <th>Ссылка</th>
+                  {% endif %}
+                  {% if (current_user.id == 1)%}
+                    <th>Редактировать</th>
+                  {% endif %}
+                </tr>
+                {% for item in books%}
+                {% if item.is_checked %}
+                    <tr>
+                        <td>{{item.title}}</td>
+                        <td>{{item.author}}</td>
+                        <td>{{item.subject}}</td>
+                        {% if current_user.is_authenticated %}
+                            <td>{{item.link}}</td>
+                        {% endif %}
+                        {% if (current_user.id == 1)%}
+                            <td>
+                                <div>
+                                    <a href="/book/{{ item.id }}" class="btn btn-outline-danger">Редактировать</a>
+                                    <a href="/book_delete/{{ item.id }}" class="btn btn-outline-danger">Удалить</a>
+                                </div>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endif %}
+                {% endfor %}
+            </table>
+         </br>
+
+    {% if (current_user.id == 1)%}
+
+    <br></br>
+
+    <h2 style="color:white;" align="center">Предложка</h2>
+        <br>
+            <table align="center">
+                <tr>
+                  <th>Название</th>
+                  <th>Автор</th>
+                  <th>Предмет</th>
+                  <th>Ссылка</th>
+                  <th>Редактировать</th>
+                </tr>
+                {% for item in books%}
+                {% if not item.is_checked %}
+                    <tr>
+                        <td>{{item.title}}</td>
+                        <td>{{item.author}}</td>
+                        <td>{{item.subject}}</td>
+                        {% if current_user.is_authenticated %}
+                            <td>{{item.link}}</td>
+                        {% endif %}
+                        {% if (current_user.id == 1)%}
+                            <td>
+                                <div>
+                                    <a href="/cheking_book/{{ item.id }}" class="btn btn-outline-danger">Добавить</a>
+                                    <a href="/book/{{ item.id }}" class="btn btn-outline-danger">Редактировать</a>
+                                    <a href="/book_delete/{{ item.id }}" class="btn btn-outline-danger">Удалить</a>
+                                </div>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endif %}
+                {% endfor %}
+            </table>
+        <br>
+    {% endif %}
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+        <p>
+            {{ form.groupID.label }}<br>
+            {{ form.groupID(class="form-control") }}<br>
+            {% for error in form.groupID.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit(type="submit", class="btn btn-secondary") }}</p>
+    {{message}}
+</form>
+{% endblock %}
