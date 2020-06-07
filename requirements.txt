@@ -1,4 +1,3 @@
-os
 flask_ngrok
 flask
 flask_wtf
