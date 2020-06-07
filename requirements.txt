@@ -4,7 +4,6 @@ flask_wtf
 wtforms
 flask_login
 requests
-sys
 datetime
 sqlalchemy
 werkzeug
