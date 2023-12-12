@@ -1,0 +1,5 @@
+fastapi==0.105.0
+proxmoxer==2.0.1
+SQLAlchemy==2.0.23
+unicorn==2.0.1.post1
+Werkzeug==3.0.1

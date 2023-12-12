@@ -1,0 +1,8 @@
+.idea
+.ipynb_checkpoints
+.vscode
+__pycache__
+.pytest_cache
+test.db
+test.sqlite3
+venv
