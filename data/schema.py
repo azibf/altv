@@ -29,6 +29,7 @@ class PhysicalNode(SqlAlchemyBase):
     owner_id = Column(Integer, ForeignKey("user.id"))
     owner = orm.relation("User")
 
+
 class DesktopPool(SqlAlchemyBase):
     __tablename__ = 'pool'
 
@@ -42,9 +43,7 @@ class DesktopPool(SqlAlchemyBase):
 
 class VirtualMachines(SqlAlchemyBase):
     __tablename__ = 'vm'
-    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     pool_id = Column(Integer, ForeignKey("pool.id"))
     pool = orm.relation('DesktopPool')
     vm = orm.relation("DesktopPool", back_populates='golden_image')
-
-    
