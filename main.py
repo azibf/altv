@@ -1,6 +1,6 @@
 from proxmoxer import ProxmoxAPI
 
-proxmox = ProxmoxAPI('77.106.68.24', user='root@pam', password='1H6b0Z8c8J', verify_ssl=False, service='PVE')
+proxmox = ProxmoxAPI('77.106.68.24', user='root@pam', password='L57uVaFjDLq9', verify_ssl=False, service='PVE')
 
 class Pool:
     def __init__(self, name, node, golden_image):
@@ -11,6 +11,7 @@ class Pool:
         
         
     def create(self, c):
+
         vmids = []
         max_vmid = max([vm['vmid'] for vm in self.node.qemu.get()])
         start = max_vmid
