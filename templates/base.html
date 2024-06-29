@@ -7,46 +7,45 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="static/css/style_table.css">
     <link rel="stylesheet" type="text/css" href="static/css/style_body.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <title>{{ title }}</title>
 </head>
 <body>
     <header>
-    <nav class="navbar navbar-light" style="background-color: #e60000;">
-        <a class="navbar-brand" href="#">
-            <h1 style="color:white;">Study hard</h1>
-        {% if current_user.is_authenticated %}
-                <a class="navbar-brand" href="/logout" style="color:white;">{{ current_user.name }}</a>
-            {% else %}
-                <p>
-                    <a class="btn btn-danger" style="background:#e60000;" href="/register">Register</a>
-                    <a class="btn btn-danger" style="background:#e60000;" href="/login">Login</a>
-                </p>
-            {% endif %}
-            <h3 style="color:white;">#BOTAY</h3>
-        </a>
-    </nav>
-    <nav class="navbar navbar-light" style="background-color: #b3b3b3;">
-        <a class="navbar-brand" href="#">
-         <br>
-            {% if current_user.is_authenticated %}
-             <a class="btn btn-link" style="color:white;" href="/map">Единомышленники в твоём городе</a>
-            {% endif %}
-             <a class="btn btn-link" style="color:white;" href="/blog">#Заботано</a>
-            {% if current_user.is_authenticated %}
-             <a class="btn btn-link" style="color:white;" href="/planner">To do list</a>
-            {% endif %}
-             <a class="btn btn-link" style="color:white;" href="/library/all">Библиотека</a>
-         </br>
-        </a>
-    </nav>
+        <nav class="navbar navbar-dark" style="background-color: #004E9F;">
+            <a class="navbar-brand" href="#">
+                <img src="../static/img/Logo_White_No-BG.svg" alt="Avatar Logo" style="width:40px;" class="rounded-pill">  
+                Pool master
+            </a>
+                {% if current_user.is_authenticated %}
+                    <a class="navbar-brand" href="/logout"  >{{ current_user.username }}</a>
+                {% endif %}
 
+        </nav>
+        {% if current_user.is_authenticated %}
+        <nav class="navbar navbar-light" style="background-color: #2499EC;">
+                <div class="col d-flex justify-content-center">
+                <a class="btn btn-link text-white" href="/main">На главную</a>
+                <a class="btn btn-link text-white" href="/pools">Список пулов</a>
+                <a class="btn btn-link text-white" href="/addPool">Создать новый пул</a>
+            <div>
+        </nav>
+        {% endif %}
     </header>
-        <!-- Begin page content -->
-        <main role="main" class="container">
-            {% block content %}{% endblock %}
+    <div class="bg-image" style="background-image: url('https://ib.bmstu.ru/bitrix/templates/onesite.study/images/courses-bg.png'); width: 100%; height: 100vh; background-repeat: no-repeat; background-size: cover;">
+        <main role="main" class="container ">
+                {% block content %}{% endblock %}
         </main>
+    </div>
+    <footer class="sticky-footer mt-auto py-3 text-white" style="background-color: rgba(0, 108, 220, 0.5);">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy; BMSTU 2024</span>
+        </div>
+    </footer>
+    
 </body>
 </html>
 

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<br>
+<div class="col d-flex justify-content-center">
+        <div class="card  w-75" style="background-color: #ffffff;">
+            <div class="card-header text-center ">
+                <h5>Редактировать пул</h5>
+            </div>
+            <div class="card-body">
+                <form action="" method="post">
+                    {{ form.hidden_tag() }}
+                    {{ form.csrf_token }}
+                    <p>
+                        {{ form.title(class="form-control", placeholder="Название пула") }}
+                        {% for error in form.title.errors %}
+                            <p class="alert alert-danger" role="alert">
+                                {{ error }}
+                            </p>
+                        {% endfor %}
+                    <p>
+                    </p>
+                        {{ form.count(class="form-control", placeholder="Количество ВМ") }}<br>
+                        {% for error in form.count.errors %}
+                            <p class="alert alert-danger" role="alert">
+                                {{ error }}
+                            </p>
+                        {% endfor %}
+                    </p>
+                    <p>{{ form.submit(type="submit", class="btn btn-secondary w-100", style="background-color: #004E9F;") }}</p>
+                    <div>{{ message }}</div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

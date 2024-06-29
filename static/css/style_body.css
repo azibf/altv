@@ -1,15 +1,31 @@
 body {
-    background-color: #000000;
+    background-color: #ffffff;
 }
+
 p {
-    color: white; /* Цвет текста */
+    color: #002C5B;
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    /* Цвет текста */
 }
+
 h1 {
-    color: white; /* Цвет текста */
+    color: #002C5B;
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    /* Цвет текста */
 }
+
 h2 {
-    color: white; /* Цвет текста */
+    color: #002C5B;
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    /* Цвет текста */
 }
+
 h3 {
-    color: white; /* Цвет текста */
+    color: #002C5B;
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    /* Цвет текста */
 }

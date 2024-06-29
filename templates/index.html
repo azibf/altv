@@ -1,31 +1,45 @@
 {% extends "base.html" %}
 
+
 {% block content %}
-<br></br>
-<h2 style="color:white;" align="center">Истории успеха</h2>
-{% if (current_user.is_authenticated)%}
-        <a href="addstory" class="btn btn-secondary">Добавить историю</a>
-{% endif %}
-<br></br>
-{% for item in news%}
-<div class="col-md6 border rounded">
-    <h3 style="color:white;" align="center">{{item.title}}</h3>
-    <div style="color:white;">
-        Автор - {{item.user.name}}
+<br>
+<h2 align="center">Узлы</h2>
+{% for item in node %}
+<h3>{{ item[0]['node'] }}</h3>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">CPU</h5>
+        <p class="card-text">{{ item[0].cpu }}/{{ item[0].maxcpu }}</p>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: {{ item[1] }}%" aria-valuenow="{{ item[1] }}" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
     </div>
-    <div style="color:white;">
-        Дата написания - {{item.created_date}}
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">MEM</h5>
+        <p class="card-text">{{ item[0].mem }}/{{ item[0].maxmem}}</p>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: {{ item[2] }}%" aria-valuenow="{{ item[2] }}" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
     </div>
-    <div style="color:white;">
-        {{item.content}}
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">HDD</h5>
+        <p class="card-text">{{ item[0].disk }}/{{ item[0].maxdisk }}</p>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: {{ item[3] }}%" aria-valuenow="{{ item[3] }}" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
     </div>
-    {% if current_user.is_authenticated and current_user == item.user %}
-    <div>
-        <a href="/story/{{ item.id }}" class="btn btn-outline-danger">Изменить</a>
-        <a href="/story_delete/{{ item.id }}" class="btn btn-outline-danger">Удалить</a>
-    </div>
-    {% endif %}
-    </div>
-    <br></br>
+  </div>
+</div>
 {% endfor %}
 {% endblock %}
