@@ -1,8 +1,5 @@
-{% extends "base.html" %}
-
-
-{% block content %}
-<br>
+{% extends "base.html" %} {% block content %}
+<br />
 <h2 align="center">Узлы</h2>
 {% for item in node %}
 <h3>{{ item[0]['node'] }}</h3>
@@ -13,7 +10,14 @@
         <h5 class="card-title">CPU</h5>
         <p class="card-text">{{ item[0].cpu }}/{{ item[0].maxcpu }}</p>
         <div class="progress">
-          <div class="progress-bar" role="progressbar" style="width: {{ item[1] }}%" aria-valuenow="{{ item[1] }}" aria-valuemin="0" aria-valuemax="100"></div>
+          <div
+            class="progress-bar"
+            role="progressbar"
+            style="width: {{ item[1] }}%"
+            aria-valuenow="{{ item[1] }}"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
         </div>
       </div>
     </div>
@@ -24,7 +28,14 @@
         <h5 class="card-title">MEM</h5>
         <p class="card-text">{{ item[0].mem }}/{{ item[0].maxmem}}</p>
         <div class="progress">
-          <div class="progress-bar" role="progressbar" style="width: {{ item[2] }}%" aria-valuenow="{{ item[2] }}" aria-valuemin="0" aria-valuemax="100"></div>
+          <div
+            class="progress-bar"
+            role="progressbar"
+            style="width: {{ item[2] }}%"
+            aria-valuenow="{{ item[2] }}"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
         </div>
       </div>
     </div>
@@ -35,11 +46,17 @@
         <h5 class="card-title">HDD</h5>
         <p class="card-text">{{ item[0].disk }}/{{ item[0].maxdisk }}</p>
         <div class="progress">
-          <div class="progress-bar" role="progressbar" style="width: {{ item[3] }}%" aria-valuenow="{{ item[3] }}" aria-valuemin="0" aria-valuemax="100"></div>
+          <div
+            class="progress-bar"
+            role="progressbar"
+            style="width: {{ item[3] }}%"
+            aria-valuenow="{{ item[3] }}"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
         </div>
       </div>
     </div>
   </div>
 </div>
-{% endfor %}
-{% endblock %}
+{% endfor %} {% endblock %}
